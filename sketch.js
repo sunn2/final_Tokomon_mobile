@@ -71,15 +71,20 @@ function draw() {
         if (d < 100) {
             // image(hatch, windowWidth / 2, windowHeight / 2, 75, 100);
             if (mouseIsPressed) {
-                background(255);
-                image(closedMouth, windowWidth / 2, windowHeight / 2, 150, 150); //스타트 눌렀을 때
-                textSize(20);
-                text('아싸!', windowWidth / 2, windowHeight / 2 + 100);
+                image(hatch, windowWidth / 2, windowHeight / 2, 75, 100);
+                // background(255);
+                // image(closedMouth, windowWidth / 2, windowHeight / 2, 150, 150); //스타트 눌렀을 때
+                // textSize(20);
+                // text('아싸!', windowWidth / 2, windowHeight / 2 + 100);
                 startClick = true;
             }
         }
         if (!mouseIsPressed && startClick) {
-            stage = 1;
+            background(255);
+            image(closedMouth, windowWidth / 2, windowHeight / 2, 150, 150); //스타트 눌렀을 때
+            textSize(20);
+            text('아싸!', windowWidth / 2, windowHeight / 2 + 100);
+            setTimeout(goToStage1, 2000);
         }
 
     } else if (stage == 1) {
@@ -125,6 +130,10 @@ function draw() {
         fill(0);
         text('배고파..', windowWidth / 2, windowHeight * 0.8);
     }
+}
+
+function goToStage1() {
+    stage = 1;
 }
 
 function goToStage2() {
