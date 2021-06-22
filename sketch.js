@@ -66,16 +66,10 @@ function draw() {
     if (stage == 0) {
         image(egg, windowWidth / 2, windowHeight / 2, 75, 100);
         text('부화하고 싶다..', windowWidth / 2, windowHeight / 2 + 100); //시작화면
-        // textSize(15);
-        // text('(천천히 눌러주면 할 수 있던데..)', windowWidth / 2, windowHeight / 2 + 120);
+
         if (d < 100) {
-            // image(hatch, windowWidth / 2, windowHeight / 2, 75, 100);
             if (mouseIsPressed) {
                 image(hatch, windowWidth / 2, windowHeight / 2, 75, 100);
-                // background(255);
-                // image(closedMouth, windowWidth / 2, windowHeight / 2, 150, 150); //스타트 눌렀을 때
-                // textSize(20);
-                // text('아싸!', windowWidth / 2, windowHeight / 2 + 100);
                 startClick = true;
             }
         }
