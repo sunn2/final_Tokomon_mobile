@@ -19,7 +19,7 @@ let stage = 0; //0;시작 1;인트로화면3초 2; 게임화면 3;배부른엔�
 let mouth = false;
 let startClick = false;
 let totalO = 0;
-let timer = 10;
+let timer = 15;
 let rnd;
 let areMoving = [];
 let hadSwitch = false;
