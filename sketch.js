@@ -19,12 +19,11 @@ let stage = 0; //0;시작 1;인트로화면3초 2; 게임화면 3;배부른엔�
 let mouth = false;
 let startClick = false;
 let totalO = 0;
-let timer = 15;
+let timer = 10;
 let rnd;
 let areMoving = [];
 let hadSwitch = false;
 let isEatingO = 0;
-
 
 function preload() {
     egg = loadImage('tokomonImages/egg.png');
@@ -41,7 +40,8 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    let cnv = createCanvas(windowWidth, windowHeight);
+    cnv.position ('fixed');
     imageMode(CENTER);
     myTokomon = new Tokomon;
     
@@ -85,7 +85,7 @@ function draw() {
     } else if (stage == 1) {
         image(looksGood, windowWidth / 2, windowHeight / 2, windowWidth, windowWidth * 0.75);
         textSize(20);
-        text('오렌지..맛있겠다..', windowWidth / 3, windowHeight / 2 + 50);
+        text('오렌지..맛있겠다..', windowWidth / 2 , windowHeight * 0.8);
         setTimeout(goToStage2, 2500);
 
     } else if (stage == 2) { //게임화면
@@ -116,12 +116,12 @@ function draw() {
 
     } else if (stage == 3) {
         image(full, windowWidth / 2, windowHeight / 2, windowWidth, windowWidth * 0.7);
-        textSize(30);
+        textSize(25);
         text('배불러..', windowWidth / 2, windowHeight * 0.8);
 
     } else if (stage == 4) {
         image(hungry, windowWidth / 2, windowHeight / 2, windowWidth, windowWidth * 0.7);
-        textSize(30);
+        textSize(25);
         fill(0);
         text('배고파..', windowWidth / 2, windowHeight * 0.8);
     }
@@ -162,9 +162,9 @@ class Tokomon {
             }
         } else {
             if (!mouth) {
-                image(closedMouth, windowWidth / 2, windowHeight / 2, 100, 100);
+                image(closedMouth, windowWidth / 2, windowHeight / 2, 110, 110);
             } else {
-                image(openedMouth, windowWidth / 2, windowHeight / 2, 110, 150);
+                image(openedMouth, windowWidth / 2, windowHeight / 2, 120, 160);
             }
         }
     }
@@ -174,9 +174,9 @@ class Tokomon {
 class Food {
     constructor(_kind) {
         this.kind = _kind; //0 -> 버섯, 1 -> 오렌지
-        this.x = random(100, width - 100);
-        this.y = random(100, height - 100);
-        this.foodSize = 50;
+        this.x = random(25, width - 25);
+        this.y = random(25, height - 25);
+        this.foodSize = 60;
         this.d;
         this.taken = false;
 
@@ -206,12 +206,12 @@ class Food {
         this.dT = dist(mouseX, mouseY, width / 2, height / 2);
         if (!this.taken && !hadSwitch) {
             if (this.d < 40) { //food에 마우스 올리면
-                this.foodSize = 55;
+                // this.foodSize = 55;
                 if (mouseIsPressed) { //food누르면
                     this.x = mouseX;
                     this.y = mouseY;
                     this.isMoving = true;
-                    this.foodSize = 60;
+                    this.foodSize = 65;
                     if (this.dT < 50) { //food를 토코몬에 가져다대면
                         mouth = true;
                         this.isPressed = true;
@@ -219,11 +219,11 @@ class Food {
                         mouth = false;
                     }
                 } else {
-                    this.foodSize = 55;
+                    // this.foodSize = 55;
                     this.isMoving = false;
                 }
             } else {
-                this.foodSize = 50;
+                this.foodSize = 60;
                 this.isMoving = false;
             }
         }
